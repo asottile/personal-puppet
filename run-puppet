@@ -31,8 +31,10 @@ def main(argv=None):
             'gem', 'install', 'puppet', '-v', '>=5,<6', '--no-document',
         ))
 
+    _msg('Execing puppet')
     cmd = (
-        'puppet', 'apply', '--modulepath', os.path.join(HERE, 'modules'),
+        'sudo', '-E', 'puppet', 'apply',
+        '--modulepath', os.path.join(HERE, 'modules'),
         os.path.join(HERE, 'manifests/site.pp'),
     )
     os.execvp(shutil.which(cmd[0]), cmd)
