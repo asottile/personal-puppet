@@ -22,4 +22,4 @@ repos:
     hooks:
     -   id: puppet-validate
     -   id: puppet-lint
-        args: [--fail-on-warnings, --no-documentation-check]
+        args: [--fix, --fail-on-warnings, --no-documentation-check]

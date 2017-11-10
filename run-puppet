@@ -33,7 +33,10 @@ def main(argv=None):
 
     _msg('Execing puppet')
     cmd = (
-        'sudo', '-E', 'puppet', 'apply',
+        'sudo', 'env',
+        'PATH={}'.format(os.environ['PATH']),
+        'GEM_HOME={}'.format(os.environ['GEM_HOME']),
+        'puppet', 'apply', '-vvv',
         '--modulepath', os.path.join(HERE, 'modules'),
         os.path.join(HERE, 'manifests/site.pp'),
     )
