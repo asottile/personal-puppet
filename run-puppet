@@ -36,7 +36,7 @@ def main(argv=None):
         'sudo', 'env',
         'PATH={}'.format(os.environ['PATH']),
         'GEM_HOME={}'.format(os.environ['GEM_HOME']),
-        'puppet', 'apply', '-vvv',
+        'puppet', 'apply', '-v',
         '--modulepath', os.path.join(HERE, 'modules'),
         os.path.join(HERE, 'manifests/site.pp'),
     )
