@@ -5,7 +5,7 @@ class desktop::background {
 
   package { 'ubuntu-wallpapers-precise': ensure => 'present' } ->
   exec { 'set desktop background':
-    command => "bash -c '
+    command => "bash -euxc '
       # DBUS_SESSION_BUS_ADDRESS is needed to update immediately
       envvar=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u asottile gnome-session)/environ);
       env \$envvar gsettings set ${schema} ${key} ${bg}
