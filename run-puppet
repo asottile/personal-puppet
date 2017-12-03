@@ -13,6 +13,7 @@ GEM_BIN = os.path.join(GEM_HOME, 'bin')
 PUPPET_BIN = os.path.join(GEM_BIN, 'puppet')
 
 HERE = os.path.dirname(os.path.realpath(__file__))
+MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
 
 def _msg(s):
@@ -25,11 +26,15 @@ def main(argv=None):
     os.environ['GEM_HOME'] = GEM_HOME
     os.environ['PATH'] = GEM_BIN + os.pathsep + os.environ['PATH']
 
-    if not os.path.exists(os.path.join(GEM_BIN, 'puppet')):
-        _msg('Ensuring puppet is installed...')
-        subprocess.check_call((
-            'gem', 'install', 'puppet', '-v', '>=5,<6', '--no-document',
-        ))
+    for exe, version in (('puppet', '>=5,<6'), ('r10k', '>=2,<3')):
+        if not os.path.exists(os.path.join(GEM_BIN, exe)):
+            _msg('Ensuring {} is installed...'.format(exe))
+            cmd = ('gem', 'install', exe, '-v', version, '--no-document')
+            subprocess.check_call(cmd)
+
+    _msg('Installing puppet modules...')
+    subprocess.check_call(('r10k', 'puppetfile', 'install'))
+    subprocess.check_call(('r10k', 'puppetfile', 'purge'))
 
     _msg('Execing puppet')
     cmd = (
@@ -37,7 +42,7 @@ def main(argv=None):
         'PATH={}'.format(os.environ['PATH']),
         'GEM_HOME={}'.format(os.environ['GEM_HOME']),
         'puppet', 'apply', '-v',
-        '--modulepath', os.path.join(HERE, 'modules'),
+        '--modulepath', MODULE_PATH,
         os.path.join(HERE, 'manifests/site.pp'),
     )
     os.execvp(shutil.which(cmd[0]), cmd)
