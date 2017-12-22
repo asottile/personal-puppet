@@ -1,5 +1,6 @@
 node default {
-  include common
+  include packages
+
   include desktop
   include wat
 }
