@@ -1,5 +1,6 @@
 node default {
-  include packages
+  require ::apt
+  require ::gdebi
 
   include desktop
   include wat

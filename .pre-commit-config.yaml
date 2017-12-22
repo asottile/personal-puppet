@@ -27,3 +27,11 @@ repos:
             --no-documentation-check,
             --no-arrow_on_right_operand_line-check,
         ]
+-   repo: local
+    hooks:
+    -   id: rubocop
+        name: rubocop
+        entry: rubocop --auto-correct
+        types: [ruby]
+        language: ruby
+        additional_dependencies: ['rubocop:0.52.0']
