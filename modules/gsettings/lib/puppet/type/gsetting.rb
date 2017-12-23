@@ -12,12 +12,25 @@ Puppet::Type.newtype(:gsetting) do
   end
 
   newproperty(:ensure) do
-    newvalue(/./) do
+    def sync
       @resource.provider.set
     end
 
     def retrieve
       @resource.provider.get
+    end
+
+    def insync?(is)
+      @rawvalue == is
+    end
+
+    def value
+      @rawvalue
+    end
+
+    def value=(x)
+      @rawvalue = x
+      super
     end
   end
 
