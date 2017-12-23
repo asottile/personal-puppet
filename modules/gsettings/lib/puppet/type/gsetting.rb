@@ -24,6 +24,10 @@ Puppet::Type.newtype(:gsetting) do
       @rawvalue == is
     end
 
+    def should_to_s(*)
+      self.class.format_value_for_display(@rawvalue)
+    end
+
     def value
       @rawvalue
     end

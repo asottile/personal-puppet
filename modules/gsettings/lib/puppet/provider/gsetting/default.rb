@@ -1,11 +1,33 @@
 require 'json'
+require 'ripper'
 
-def encode(v)
-  JSON.dump(v).tr('"', "'")
+def _parse_inner(sexp)
+  case sexp[0]
+  when :program
+    inner, = sexp[1]
+    _parse_inner(inner)
+  when :string_literal, :dyna_symbol
+    return sexp[1][1][1]
+  when :@int
+    sexp[1].to_i
+  when :@float
+    sexp[1].to_f
+  when :var_ref
+    { 'true' => true, 'false' => false, 'nil' => nil }[sexp[1][1]]
+  when :array
+    sexp[1].map { |x| _parse_inner(x) }
+  when :hash
+    kvs = sexp[1][1].map do |kv|
+      [_parse_inner(kv[1]), _parse_inner(kv[2])]
+    end
+    Hash[kvs]
+  else
+    raise "notimplemented #{sexp[0]}"
+  end
 end
 
-def decode(v)
-  JSON.parse(v.tr("'", '"'), quirks_mode: true)
+def literal_eval(s)
+  _parse_inner(Ripper.sexp(s))
 end
 
 def run_gsettings(uid, *cmd)
@@ -28,12 +50,12 @@ Puppet::Type.type(:gsetting).provide(:default) do
 
   def get
     schema, key = schema_key
-    decode(run_gsettings(@resource[:user], ['get', schema, key]))
+    literal_eval(run_gsettings(@resource[:user], ['get', schema, key]))
   end
 
   def set
     schema, key = schema_key
-    value = encode(@resource[:ensure])
+    value = JSON.dump(@resource[:ensure])
     run_gsettings(@resource[:user], ['set', schema, key, value])
   end
 end
