@@ -4,6 +4,7 @@ class desktop {
   include desktop::pidgin
 
   include packages::debian_packaging
+  include packages::python
 
   if ! $::is_virtual {
     include packages::vagrant
