@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<purple version='1.0'>
+	<blist>
+		<group name='ocf'>
+			<setting name='collapsed' type='bool'>1</setting>
+			<chat proto='prpl-irc' account='asottile@irc.ocf.berkeley.edu'>
+				<component name='channel'>#rebuild</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+			</chat>
+			<chat proto='prpl-irc' account='asottile@irc.ocf.berkeley.edu'>
+				<component name='channel'>#webcore2</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+			</chat>
+		</group>
+	</blist>
+	<privacy>
+		<account proto='prpl-irc' name='asottile@irc.ocf.berkeley.edu' mode='1'/>
+	</privacy>
+</purple>
