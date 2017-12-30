@@ -8,5 +8,8 @@ class packages::virtualbox {
     release  => $::lsbdistcodename,
     repos    => 'contrib',
   } ->
-  package { 'virtualbox-5.2': ensure => 'latest' }
+  package { 'virtualbox-5.2':
+    ensure  => 'latest',
+    require => Exec['apt_update'],
+  }
 }

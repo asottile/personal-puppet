@@ -3,6 +3,7 @@ class packages::python {
 
   apt::ppa { 'ppa:deadsnakes/ppa': } ->
   package { ['python2.6-dev', 'python3.4-dev', 'python3.6-dev']:
-    ensure => 'latest',
+    ensure  => 'latest',
+    require => Exec['apt_update'],
   }
 }
