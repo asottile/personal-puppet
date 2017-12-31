@@ -1,5 +1,5 @@
 class desktop::pidgin {
-  package { 'pidgin': ensure => 'latest' } ->
+  package { ['pidgin', 'pidgin-plugin-pack']: ensure => 'latest' } ->
   file { '/home/asottile/.purple':
     ensure => 'directory',
     owner  => 'asottile',
