@@ -5,6 +5,7 @@ class desktop {
 
   include packages::debian_packaging
   include packages::python
+  include packages::utilities
 
   if ! $::is_virtual {
     include packages::vagrant
