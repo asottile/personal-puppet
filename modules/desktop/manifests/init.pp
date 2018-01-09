@@ -4,6 +4,7 @@ class desktop {
   include desktop::pidgin
 
   include packages::debian_packaging
+  include packages::docker
   include packages::python
   include packages::utilities
 
