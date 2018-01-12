@@ -3,7 +3,7 @@ class packages::docker {
     source => 'https://download.docker.com/linux/ubuntu/gpg',
   } ->
   apt::source { 'docker-ce':
-    architecture => 'amd64',
+    architecture => $::architecture,
     location     => 'https://download.docker.com/linux/ubuntu',
     release      => "${::lsbdistcodename} stable",
   } ->
