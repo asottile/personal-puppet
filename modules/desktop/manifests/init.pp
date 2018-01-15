@@ -1,10 +1,10 @@
 class desktop {
   include desktop::background
+  include desktop::docker
   include desktop::launcher
   include desktop::pidgin
 
   include packages::debian_packaging
-  include packages::docker
   include packages::python
   include packages::utilities
 
