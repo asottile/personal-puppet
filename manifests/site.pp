@@ -3,5 +3,4 @@ node default {
   require ::gdebi
 
   include desktop
-  include wat
 }
