@@ -1,13 +1,11 @@
 class desktop::launcher {
-  gsetting { 'com.canonical.Unity.Launcher favorites':
+  gsetting { 'org.gnome.shell favorite-apps':
     ensure  => [
-      'application://org.gnome.Nautilus.desktop',
-      'application://gnome-terminal.desktop',
-      'application://firefox.desktop',
-      'application://pidgin.desktop',
-      'application://unity-control-center.desktop',
-      # built in unity things
-      'unity://running-apps', 'unity://expo-icon', 'unity://devices',
+      'org.gnome.Nautilus.desktop',
+      'org.gnome.Terminal.desktop',
+      'firefox.desktop',
+      'pidgin.desktop',
+      'gnome-control-center.desktop',
     ],
     user    => 'asottile',
     require => [Package['pidgin']],

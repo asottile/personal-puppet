@@ -5,7 +5,8 @@ class packages::docker {
   apt::source { 'docker-ce':
     architecture => $::architecture,
     location     => 'https://download.docker.com/linux/ubuntu',
-    release      => "${::lsbdistcodename} stable",
+    # TODO: switch to stable when released in bionic
+    release      => "${::lsbdistcodename} edge",
   } ->
   package { 'docker-ce':
     ensure  => 'latest',

@@ -1,6 +1,7 @@
 class desktop {
   include desktop::background
   include desktop::docker
+  include desktop::homedir
   include desktop::launcher
   include desktop::pidgin
 
