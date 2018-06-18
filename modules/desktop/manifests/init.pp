@@ -1,9 +1,11 @@
 class desktop {
   include desktop::background
   include desktop::docker
+  include desktop::dotfiles
   include desktop::homedir
   include desktop::launcher
   include desktop::pidgin
+  include desktop::venv
 
   include packages::debian_packaging
   include packages::python

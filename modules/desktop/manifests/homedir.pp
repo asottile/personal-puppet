@@ -10,4 +10,10 @@ class desktop::homedir {
     recurse => true,
     force   => true,
   }
+
+  file { '/home/asottile/bin':
+    ensure => 'directory',
+    owner  => 'asottile',
+    group  => 'asottile',
+  }
 }
