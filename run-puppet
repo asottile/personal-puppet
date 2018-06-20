@@ -23,6 +23,9 @@ def _msg(s):
 
 
 def main(argv=None):
+    if subprocess.call(('ssh-add', '-l'), stdout=subprocess.DEVNULL):
+        subprocess.check_call('ssh-add')
+
     os.environ['GEM_HOME'] = GEM_HOME
     os.environ['PATH'] = GEM_BIN + os.pathsep + os.environ['PATH']
 
