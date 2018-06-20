@@ -1,7 +1,7 @@
 class desktop::dotfiles {
   $dotfiles = [
-    '.bash_profile', '.gitconfig', '.hgrc', 'nanorc', '.nanorc', '.pdbrc',
-    '.pypirc', '.pythonrc.py', '.tmux.conf',
+    '.bashrc', '.bash_aliases', '.gitconfig', '.hgrc', 'nanorc', '.nanorc',
+    '.pdbrc', '.pypirc', '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
@@ -46,4 +46,7 @@ class desktop::dotfiles {
     group  => 'asottile',
     mode   => '0600',
   }
+
+  # old: remove once all machines updated
+  file { '/home/asottile/.bash_profile': ensure => 'absent' }
 }
