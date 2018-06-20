@@ -46,7 +46,4 @@ class desktop::dotfiles {
     group  => 'asottile',
     mode   => '0600',
   }
-
-  # old: remove once all machines updated
-  file { '/home/asottile/.bash_profile': ensure => 'absent' }
 }
