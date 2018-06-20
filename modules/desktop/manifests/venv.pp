@@ -1,9 +1,11 @@
 class desktop::venv {
   $packages = [
-    'flake8', 'pre-commit', 'tox', 'tox-pip-extensions',
+    'aactivator', 'flake8', 'pre-commit', 'tox', 'tox-pip-extensions',
     'tox-virtualenv-no-download', 'twine', 'virtualenv',
   ]
-  $binaries = ['flake8', 'pre-commit', 'tox', 'twine', 'virtualenv']
+  $binaries = [
+    'aactivator', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
+  ]
 
   exec { 'create ~/opt/venv':
     command => join([
