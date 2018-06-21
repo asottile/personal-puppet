@@ -1,5 +1,13 @@
 NAME_RE = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)* [a-zA-Z0-9_-]+$/
 
+def _bool_to_puppet(b)
+  { true => ':true', false => ':false', nil => ':nil' }.fetch(b, b)
+end
+
+def _puppet_to_bool(s)
+  { ':true' => true, ':false' => false, ':nil' => nil }.fetch(s, s)
+end
+
 Puppet::Type.newtype(:gsetting) do
   newparam(:name, namevar: true) do
     desc 'In the form: `SCHEMA KEY`'
@@ -17,7 +25,7 @@ Puppet::Type.newtype(:gsetting) do
     end
 
     def retrieve
-      @resource.provider.get
+      _bool_to_puppet(@resource.provider.get)
     end
 
     def insync?(is)
@@ -29,7 +37,7 @@ Puppet::Type.newtype(:gsetting) do
     end
 
     def value
-      @rawvalue
+      _puppet_to_bool(@rawvalue)
     end
 
     def value=(x)
