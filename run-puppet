@@ -2,6 +2,8 @@
 import os.path
 import subprocess
 import sys
+from typing import NoReturn
+from typing import Tuple
 
 
 PERSONAL_PUPPET = os.path.join(
@@ -16,19 +18,23 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
 
-def _msg(s):
+def _msg(s: str) -> None:
     print('=' * 79)
     print(s)
     print('=' * 79, flush=True)
 
 
-def main(argv=None):
+def main() -> NoReturn:
+    if subprocess.call(('ssh-add', '-l'), stdout=subprocess.DEVNULL):
+        subprocess.check_call('ssh-add')
+
     os.environ['GEM_HOME'] = GEM_HOME
     os.environ['PATH'] = GEM_BIN + os.pathsep + os.environ['PATH']
 
     for exe, version in (('puppet', '>=5,<6'), ('r10k', '>=2,<3')):
         if not os.path.exists(os.path.join(GEM_BIN, exe)):
             _msg('Ensuring {} is installed...'.format(exe))
+            cmd: Tuple[str, ...]
             cmd = ('gem', 'install', exe, '-v', version, '--no-document')
             subprocess.check_call(cmd)
 
@@ -41,12 +47,14 @@ def main(argv=None):
         'sudo', 'env',
         'PATH={}'.format(os.environ['PATH']),
         'GEM_HOME={}'.format(os.environ['GEM_HOME']),
+        'SSH_AUTH_SOCK={}'.format(os.environ['SSH_AUTH_SOCK']),
         'puppet', 'apply', '-v', '--show_diff',
         '--modulepath', MODULE_PATH,
         os.path.join(HERE, 'manifests/site.pp'),
         *sys.argv[1:],
     )
     os.execvp(cmd[0], cmd)
+    raise SystemError('https://github.com/python/typeshed/pull/2226')
 
 
 if __name__ == '__main__':

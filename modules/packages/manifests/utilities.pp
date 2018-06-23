@@ -1,3 +1,3 @@
 class packages::utilities {
-  package { ['jq', 'tree']: ensure => 'latest' }
+  package { ['curl', 'jq', 'tree']: ensure => 'latest' }
 }

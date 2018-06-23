@@ -5,7 +5,8 @@ class packages::docker {
   apt::source { 'docker-ce':
     architecture => $::architecture,
     location     => 'https://download.docker.com/linux/ubuntu',
-    release      => "${::lsbdistcodename} stable",
+    repos        => 'stable',
+    release      => $::lsbdistcodename,
   } ->
   package { 'docker-ce':
     ensure  => 'latest',
