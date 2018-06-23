@@ -8,6 +8,7 @@ class desktop {
   include desktop::venv
 
   include packages::debian_packaging
+  include packages::build_deps
   include packages::python
   include packages::utilities
 
