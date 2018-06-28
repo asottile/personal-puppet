@@ -5,6 +5,7 @@ class desktop {
   include desktop::homedir
   include desktop::launcher
   include desktop::pidgin
+  include desktop::screensaver
   include desktop::venv
 
   include packages::debian_packaging

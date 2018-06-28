@@ -27,6 +27,8 @@ def _parse_inner(sexp)
 end
 
 def literal_eval(s)
+  # gsettings has special integer types that don't actually matter
+  s.sub!(/^uint32 /, '')
   _parse_inner(Ripper.sexp(s))
 end
 
