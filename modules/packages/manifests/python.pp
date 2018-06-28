@@ -2,7 +2,7 @@ class packages::python {
   package { ['python-dev', 'python3-dev']: ensure => 'latest' }
 
   apt::ppa { 'ppa:deadsnakes/ppa': } ->
-  package { 'python3.5-dev':
+  package { ['python3.5-dev', 'python3.7-dev']:
     ensure  => 'latest',
     require => Exec['apt_update'],
   }
