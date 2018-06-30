@@ -11,7 +11,7 @@ class desktop::homedir {
     force   => true,
   }
 
-  file { '/home/asottile/bin':
+  file { ['/home/asottile/bin', '/home/asottile/opt']:
     ensure => 'directory',
     owner  => 'asottile',
     group  => 'asottile',

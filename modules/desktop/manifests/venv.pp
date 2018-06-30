@@ -19,7 +19,7 @@ class desktop::venv {
     ]),
     user    => 'asottile',
     path    => '/usr/sbin:/usr/bin:/bin',
-    require => Package['curl'],
+    require => [Package['curl'], File['/home/asottile/opt']],
   }
 
   # TODO: this is quite slow, ideally I'd like something like
