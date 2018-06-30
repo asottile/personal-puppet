@@ -11,6 +11,7 @@ class desktop {
   include packages::debian_packaging
   include packages::build_deps
   include packages::editors
+  include packages::node
   include packages::python
   include packages::utilities
 
