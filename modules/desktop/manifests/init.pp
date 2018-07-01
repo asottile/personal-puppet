@@ -6,6 +6,7 @@ class desktop {
   include desktop::homedir
   include desktop::launcher
   include desktop::pidgin
+  include desktop::pypy
   include desktop::screensaver
   include desktop::venv
 
