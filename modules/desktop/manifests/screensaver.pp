@@ -3,4 +3,8 @@ class desktop::screensaver {
     ensure => 0,
     user   => 'asottile',
   }
+  gsetting { 'org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type':
+    ensure => 'nothing',
+    user   => 'asottile',
+  }
 }
