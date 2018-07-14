@@ -54,7 +54,6 @@ def main() -> NoReturn:
         *sys.argv[1:],
     )
     os.execvp(cmd[0], cmd)
-    raise SystemError('https://github.com/python/typeshed/pull/2226')
 
 
 if __name__ == '__main__':
