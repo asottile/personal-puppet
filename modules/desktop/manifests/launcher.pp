@@ -10,4 +10,8 @@ class desktop::launcher {
     user    => 'asottile',
     require => [Package['pidgin']],
   }
+  gsetting { 'org.gnome.shell.extensions.dash-to-dock multi-monitor':
+    ensure => ':true',
+    user   => 'asottile',
+  }
 }
