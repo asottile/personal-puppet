@@ -6,7 +6,7 @@ class desktop::dotfiles {
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
     'python/git-github-fork', 'python/git-github-url',
-    'python/prune-remote-branches.py',
+    'python/inotify-exec', 'python/prune-remote-branches.py',
   ]
 
   vcsrepo { '/home/asottile/workspace/scratch':

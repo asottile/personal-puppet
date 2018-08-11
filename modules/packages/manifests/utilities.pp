@@ -1,3 +1,3 @@
 class packages::utilities {
-  package { ['curl', 'jq', 'tree']: ensure => 'latest' }
+  package { ['curl', 'inotify-tools', 'jq', 'tree']: ensure => 'latest' }
 }
