@@ -9,7 +9,7 @@
 				<setting name='gtk-autojoin' type='bool'>1</setting>
 			</chat>
 			<chat proto='prpl-irc' account='asottile@irc.ocf.berkeley.edu'>
-				<component name='channel'>#webcore2</component>
+				<component name='channel'>#webcore3</component>
 				<setting name='gtk-autojoin' type='bool'>1</setting>
 			</chat>
 		</group>
