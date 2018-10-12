@@ -3,9 +3,10 @@ class packages::virtualbox {
     source => 'https://www.virtualbox.org/download/oracle_vbox_2016.asc',
   } ->
   apt::source { 'virtualbox':
-    location => 'http://download.virtualbox.org/virtualbox/debian',
-    release  => $::lsbdistcodename,
-    repos    => 'contrib',
+    location     => 'http://download.virtualbox.org/virtualbox/debian',
+    release      => $::lsbdistcodename,
+    architecture => $::architecture,
+    repos        => 'contrib',
   } ->
   package { 'virtualbox-5.2':
     ensure  => 'latest',
