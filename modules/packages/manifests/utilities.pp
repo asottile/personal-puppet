@@ -1,3 +1,4 @@
 class packages::utilities {
-  package { ['curl', 'inotify-tools', 'jq', 'tree']: ensure => 'latest' }
+  $tools = ['curl', 'dos2unix', 'inotify-tools', 'jq', 'tree']
+  package { $tools: ensure => 'latest' }
 }
