@@ -9,13 +9,14 @@ class desktop::venv {
 
   exec { 'create ~/opt/venv':
     command => join([
+      'rm -rf /home/asottile/opt/venv && ',
       'curl https://asottile.github.io/get-virtualenv.py | ',
       'python3 - /home/asottile/opt/venv',
     ]),
     unless  => join([
         'test -x /home/asottile/opt/venv/bin/python && ',
         '/home/asottile/opt/venv/bin/python -c ',
-        '"import ctypes, datetime, io, os, ssl, weakref"',
+        '"import cmath, ctypes, datetime, io, os, ssl, weakref"',
     ]),
     user    => 'asottile',
     path    => '/usr/sbin:/usr/bin:/bin',
