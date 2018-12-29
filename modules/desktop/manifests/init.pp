@@ -1,4 +1,5 @@
 class desktop {
+  include desktop::apple_touchpad
   include desktop::background
   include desktop::docker
   include desktop::dotfiles
