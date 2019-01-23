@@ -39,8 +39,8 @@ def main() -> NoReturn:
             subprocess.check_call(cmd)
 
     _msg('Installing puppet modules...')
-    subprocess.check_call(('r10k', 'puppetfile', 'install'))
-    subprocess.check_call(('r10k', 'puppetfile', 'purge'))
+    subprocess.check_call(('r10k', 'puppetfile', 'install'), cwd=HERE)
+    subprocess.check_call(('r10k', 'puppetfile', 'purge'), cwd=HERE)
 
     _msg('Execing puppet')
     cmd = (
