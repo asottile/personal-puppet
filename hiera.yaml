@@ -1,0 +1,4 @@
+version: 5
+hierarchy:
+    -   name: "Common data"
+        path: common.yaml

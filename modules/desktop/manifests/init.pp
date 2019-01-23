@@ -18,6 +18,8 @@ class desktop {
   include desktop::virtualbox
   include desktop::workspace
 
+  include desktop::test
+
   include packages::debian_packaging
   include packages::build_deps
   include packages::editors

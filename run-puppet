@@ -55,6 +55,7 @@ def main() -> int:
         'SSH_AUTH_SOCK={}'.format(os.environ['SSH_AUTH_SOCK']),
         'puppet', 'apply', '-v', '--show_diff', '--detailed-exitcodes',
         '--modulepath', MODULE_PATH,
+        '--hiera_config', os.path.join(HERE, 'hiera.yaml'),
         os.path.join(HERE, 'manifests/site.pp'),
         *sys.argv[1:],
     ))
