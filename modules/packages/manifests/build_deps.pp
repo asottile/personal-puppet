@@ -5,6 +5,7 @@ class packages::build_deps {
     # cpython
     'libffi-dev',
     'libreadline-dev',
+    'libsqlite3-dev',
     # pyyaml
     'libyaml-dev',
     # scss_lint
