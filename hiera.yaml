@@ -1,4 +1,9 @@
 version: 5
 hierarchy:
+    -   name: "Common secret data"
+        lookup_key: eyaml_lookup_key
+        path: common.eyaml
+        options:
+          sshagent_keyid: /home/asottile/.ssh/id_rsa
     -   name: "Common data"
         path: common.yaml
