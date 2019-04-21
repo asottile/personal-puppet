@@ -1,3 +1,3 @@
 class desktop::purged {
-  package { 'libreoffice-common': ensure => purged }
+  package { ['libreoffice-common', 'snapd']: ensure => purged }
 }
