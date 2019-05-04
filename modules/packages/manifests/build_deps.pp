@@ -8,6 +8,8 @@ class packages::build_deps {
     'libsqlite3-dev',
     # pyyaml
     'libyaml-dev',
+    # pypy
+    'pkg-config',
     # scss_lint
     'ruby-dev',
   ]
