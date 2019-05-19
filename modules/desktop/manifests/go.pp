@@ -1,16 +1,21 @@
 class desktop::go {
   # https://golang.org/dl/
-  $version = 'go1.10.3.linux-amd64.tar.gz'
-  $sha256 = 'fa1b0e45d3b647c252f51f5e1204aba049cde4af177ef9f2181f43004f901035'
+  $go = 'go1.12.5.linux-amd64'
+  $sha256 = 'aea86e3c73495f205929cfebba0d63f1382c8ac59be081b6351681415f4063cf'
 
-  archive { "/tmp/${version}":
+  file { "/home/asottile/opt/${go}":
+    ensure => 'directory',
+    owner  => 'asottile',
+    group  => 'asottile',
+  } ->
+  archive { "/tmp/${go}.tar.gz":
     ensure        => 'present',
-    source        => "https://dl.google.com/go/${version}",
+    source        => "https://dl.google.com/go/${go}.tar.gz",
     checksum      => $sha256,
     checksum_type => 'sha256',
     extract       => true,
-    extract_path  => '/home/asottile/opt',
-    creates       => '/home/asottile/opt/go/bin/go',
+    extract_path  => "/home/asottile/opt/${go}",
+    creates       => "/home/asottile/opt/${go}/go/bin/go",
     user          => 'asottile',
     group         => 'asottile',
     require       => [Package['curl'], File['/home/asottile/opt']],
@@ -18,10 +23,19 @@ class desktop::go {
   ['go', 'godoc', 'gofmt'].each |$bin| {
     file { "/home/asottile/bin/${bin}":
       ensure  => 'link',
-      target  => "/home/asottile/opt/go/bin/${bin}",
+      target  => "/home/asottile/opt/${go}/go/bin/${bin}",
       owner   => 'asottile',
       group   => 'asottile',
-      require => [File['/home/asottile/bin'], Archive["/tmp/${version}"]],
+      require => [File['/home/asottile/bin'], Archive["/tmp/${go}.tar.gz"]],
     }
+  }
+
+  # purge old versions, remove when updated
+  file { [
+    '/home/asottile/opt/go',
+  ]:
+    ensure  => 'absent',
+    recurse => true,
+    force   => true
   }
 }
