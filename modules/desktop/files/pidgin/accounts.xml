@@ -9,7 +9,9 @@
 				<attributes/>
 			</status>
 			<status type='away' name='Away' active='false'>
-				<attributes/>
+				<attributes>
+					<attribute id='message' value='I&apos;m not here right now'/>
+				</attributes>
 			</status>
 			<status type='offline' name='Offline' active='false'>
 				<attributes/>
