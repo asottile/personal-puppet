@@ -5,7 +5,7 @@ class packages::node {
     source => 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key',
   } ->
   apt::source { 'nodesource':
-    location => 'https://deb.nodesource.com/node_10.x',
+    location => 'https://deb.nodesource.com/node_12.x',
     repos    => 'main',
     release  => $::lsbdistcodename,
   } ->
