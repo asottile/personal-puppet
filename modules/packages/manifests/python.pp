@@ -8,4 +8,11 @@ class packages::python {
     ensure  => 'latest',
     require => Exec['apt_update'],
   }
+
+  ['python3.5', 'python3.6', 'python3.7', 'python3.8'].each |String $python| {
+    file {"/etc/${python}/sitecustomize.py":
+      ensure  => present,
+      content => '',
+    }
+  }
 }
