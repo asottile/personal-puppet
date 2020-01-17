@@ -20,7 +20,7 @@ class desktop::go {
     group         => 'asottile',
     require       => [Package['curl'], File['/home/asottile/opt']],
   }
-  ['go', 'godoc', 'gofmt'].each |$bin| {
+  ['go', 'gofmt'].each |$bin| {
     file { "/home/asottile/bin/${bin}":
       ensure  => 'link',
       target  => "/home/asottile/opt/${go}/go/bin/${bin}",
@@ -28,6 +28,11 @@ class desktop::go {
       group   => 'asottile',
       require => [File['/home/asottile/bin'], Archive["/tmp/${go}.tar.gz"]],
     }
+  }
+
+  # this is no longer present in modern go
+  file { '/home/asottile/bin/godoc':
+    ensure => 'absent',
   }
 
   # purge old versions, remove when updated
