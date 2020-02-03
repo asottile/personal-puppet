@@ -1,7 +1,7 @@
 class desktop::venv {
   $packages = [
-    'aactivator', 'flake8', 'future-breakpoint', 'pre-commit', 'tox',
-    'tox-pip-extensions', 'twine', 'virtualenv',
+    'aactivator', 'flake8', 'future-breakpoint', 'pre-commit', 'tox', 'twine',
+    'virtualenv',
   ]
   $binaries = [
     'aactivator', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
