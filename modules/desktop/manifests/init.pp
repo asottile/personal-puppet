@@ -11,6 +11,7 @@ class desktop {
   include desktop::pypy
   include desktop::screensaver
   include desktop::venv
+  include desktop::virtualbox
 
   include packages::debian_packaging
   include packages::build_deps
