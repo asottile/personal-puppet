@@ -1,7 +1,7 @@
 class desktop::dotfiles {
   $dotfiles = [
     '.bashrc', '.bash_aliases', '.gitconfig', '.hgrc', 'nanorc', '.nanorc',
-    '.pdbrc', '.pypirc', '.pythonrc.py', '.tmux.conf',
+    '.pypirc', '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
@@ -25,6 +25,9 @@ class desktop::dotfiles {
       require => Vcsrepo['/home/asottile/workspace/scratch'],
     }
   }
+
+  # previous dotfiles, removed
+  file { '/home/asottile/.pdbrc': ensure => 'absent'}
 
   $binfiles.each |$f| {
     file { "/home/asottile/bin/${basename($f)}":
