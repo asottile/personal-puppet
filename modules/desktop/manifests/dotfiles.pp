@@ -1,7 +1,7 @@
 class desktop::dotfiles {
   $dotfiles = [
-    '.bashrc', '.bash_aliases', '.config/babi/theme.json', '.gitconfig',
-    '.hgrc', '.nanorc', '.pypirc', '.pythonrc.py', '.tmux.conf',
+    '.bashrc', '.bash_aliases', '.gitconfig', '.hgrc', '.nanorc', '.pypirc',
+    '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
