@@ -26,6 +26,19 @@ class desktop::dotfiles {
     }
   }
 
+  file { '/home/asottile/.config/babi':
+    ensure => 'directory',
+    owner  => 'asottile',
+    group  => 'asottile',
+  } ->
+  file { '/home/asottile/.config/babi/theme.json':
+    ensure    => 'link',
+    target    => '/home/asottile/workspace/scratch/.config/babi/theme.json',
+    owner     => 'asottile',
+    group     => 'asottile',
+      require => Vcsrepo['/home/asottile/workspace/scratch'],
+  }
+
   # previous dotfiles, removed
   file { ['/home/asottile/.pdbrc', '/home/asottile/nanorc']:
     ensure => 'absent'
