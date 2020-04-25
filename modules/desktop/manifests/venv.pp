@@ -1,10 +1,10 @@
 class desktop::venv {
   $packages = [
-    'aactivator', 'flake8', 'future-breakpoint', 'pre-commit', 'tox', 'twine',
-    'virtualenv',
+    'aactivator', 'babi', 'flake8', 'future-breakpoint', 'pre-commit', 'tox',
+    'twine', 'virtualenv',
   ]
   $binaries = [
-    'aactivator', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
+    'aactivator', 'babi', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
   ]
 
   exec { 'create ~/opt/venv':
