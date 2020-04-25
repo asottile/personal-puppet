@@ -1,7 +1,7 @@
 class desktop::dotfiles {
   $dotfiles = [
-    '.bashrc', '.bash_aliases', '.gitconfig', '.hgrc', 'nanorc', '.nanorc',
-    '.pypirc', '.pythonrc.py', '.tmux.conf',
+    '.bashrc', '.bash_aliases', '.gitconfig', '.hgrc', '.nanorc', '.pypirc',
+    '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
@@ -27,7 +27,9 @@ class desktop::dotfiles {
   }
 
   # previous dotfiles, removed
-  file { '/home/asottile/.pdbrc': ensure => 'absent'}
+  file { ['/home/asottile/.pdbrc', '/home/asottile/nanorc']:
+    ensure => 'absent'
+  }
 
   $binfiles.each |$f| {
     file { "/home/asottile/bin/${basename($f)}":
