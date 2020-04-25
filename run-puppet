@@ -17,6 +17,13 @@ PUPPET_BIN = os.path.join(GEM_BIN, 'puppet')
 HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
+GEMS = (
+    ('puppet', '5.5.19'),
+    ('r10k', '3.4.1'),
+    # TODO: puppet 5.x is broken on ruby 2.7
+    ('sync', '0.5.0'),
+)
+
 
 def _msg(s: str) -> None:
     print('=' * 79)
@@ -31,11 +38,11 @@ def main() -> NoReturn:
     os.environ['GEM_HOME'] = GEM_HOME
     os.environ['PATH'] = GEM_BIN + os.pathsep + os.environ['PATH']
 
-    for exe, version in (('puppet', '>=5,<6'), ('r10k', '>=3,<4')):
-        if not os.path.exists(os.path.join(GEM_BIN, exe)):
-            _msg('Ensuring {} is installed...'.format(exe))
+    for gem, version in GEMS:
+        if not os.path.exists(os.path.join(GEM_HOME, f'gems/{gem}-{version}')):
+            _msg('Ensuring {} is installed...'.format(gem))
             cmd: Tuple[str, ...]
-            cmd = ('gem', 'install', exe, '-v', version, '--no-document')
+            cmd = ('gem', 'install', gem, '-v', version, '--no-document')
             subprocess.check_call(cmd)
 
     _msg('Installing puppet modules...')
