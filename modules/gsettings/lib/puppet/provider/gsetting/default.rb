@@ -33,7 +33,7 @@ def literal_eval(s)
 end
 
 def run_gsettings(uid, *cmd)
-  pid = `pgrep -u #{uid} gnome-session`.strip
+  pid = `pgrep --uid asottile --newest gnome-session`.strip
   envv = `grep -z DBUS_SESSION_BUS_ADDRESS /proc/#{pid}/environ`.strip
   Puppet::Util::Execution.execute(
     ['env', envv, 'gsettings', *cmd],
