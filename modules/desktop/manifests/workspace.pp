@@ -1,6 +1,5 @@
 class desktop::workspace {
   $repos = [
-    'python/cpython',
     'asottile/all-repos', 'asottile/babi', 'asottile/pyupgrade',
     'pre-commit/pre-commit', 'pre-commit/pre-commit-hooks',
   ]
@@ -12,6 +11,16 @@ class desktop::workspace {
       user     => 'asottile',
       provider => 'git',
       source   => "git@github.com:${repo}",
+    }
+  }
+
+  vcsrepo { '/home/asottile/workspace/cpython':
+    ensure   => 'present',
+    user     => 'asottile',
+    provider => 'git',
+    source   => {
+      'origin'   => 'git@github.com:python/cpython',
+      'asottile' => 'git@github.com:asottile/cpython',
     }
   }
 
