@@ -12,6 +12,7 @@ class desktop {
   include desktop::screensaver
   include desktop::venv
   include desktop::virtualbox
+  include desktop::workspace
 
   include packages::debian_packaging
   include packages::build_deps
