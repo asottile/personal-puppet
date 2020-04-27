@@ -1,4 +1,11 @@
 class desktop::workspace {
+  file { '/home/asottile/workspace':
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'asottile',
+    group  => 'asottile',
+  }
+
   $repos = [
     'asottile/all-repos', 'asottile/babi', 'asottile/pyupgrade',
     'pre-commit/pre-commit', 'pre-commit/pre-commit-hooks',
