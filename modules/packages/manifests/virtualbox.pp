@@ -8,7 +8,7 @@ class packages::virtualbox {
     architecture => $::architecture,
     repos        => 'contrib',
   } ->
-  package { 'virtualbox-5.2':
+  package { 'virtualbox-6.1':
     ensure  => 'latest',
     require => Exec['apt_update'],
   }
