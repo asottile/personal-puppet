@@ -23,7 +23,6 @@ class desktop {
 
   if ! $::is_virtual {
     include packages::vlc
-    include packages::vagrant
     include packages::virtualbox
   }
 }
