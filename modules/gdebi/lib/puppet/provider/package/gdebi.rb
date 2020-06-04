@@ -1,13 +1,11 @@
 require 'cgi'
 require 'digest'
-require 'net/http'
+require 'open-uri'
 
 def download_and_verify(uri, path, sha256)
   open path, 'wb' do |io|
-    Net::HTTP.get_response uri do |resp|
-      resp.read_body do |chunk|
-        io.write chunk
-      end
+    URI.open uri do |f|
+      io.write f.read
     end
   end
 
