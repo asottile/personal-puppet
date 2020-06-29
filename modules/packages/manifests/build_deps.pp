@@ -4,6 +4,8 @@ class packages::build_deps {
     'libcurl4-openssl-dev', 'libssl-dev', 'zlib1g-dev',
     # cpython
     'libffi-dev', 'libreadline-dev', 'libsqlite3-dev',
+    # oniguruma
+    'libtool',
     # pyyaml
     'libyaml-dev',
     # pypy
