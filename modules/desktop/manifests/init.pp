@@ -19,6 +19,7 @@ class desktop {
   include packages::editors
   include packages::gnome_terminal
   include packages::node
+  include packages::podman
   include packages::python
   include packages::utilities
 
