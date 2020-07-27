@@ -1,9 +1,5 @@
 class desktop::venv {
   $packages = [
-    'aactivator', 'babi', 'flake8', 'future-breakpoint', 'pre-commit', 'tox',
-    'twine', 'virtualenv',
-  ]
-  $binaries = [
     'aactivator', 'babi', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
   ]
 
@@ -37,7 +33,7 @@ class desktop::venv {
     }
   }
 
-  $binaries.each |$bin| {
+  $packages.each |$bin| {
     file { "/home/asottile/bin/${bin}":
       ensure  => 'link',
       target  => "/home/asottile/opt/venv/bin/${bin}",
