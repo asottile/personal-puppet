@@ -2,17 +2,19 @@ class desktop::venv {
   $packages = [
     'aactivator', 'babi', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
   ]
+  $venv = '/home/asottile/opt/venv'
 
-  exec { 'create ~/opt/venv':
+  exec { "create ${venv}":
     command => join([
-      'rm -rf /home/asottile/opt/venv && ',
-      'curl https://asottile.github.io/get-virtualenv.py | ',
-      'python3 - /home/asottile/opt/venv',
+      "rm -rf ${venv} && ",
+      'curl --silent --location --output /tmp/virtualenv.pyz https://bootstrap.pypa.io/virtualenv.pyz && ',
+      "python3 /tmp/virtualenv.pyz ${venv} && ",
+      'rm -rf /tmp/virtualenv.pyz',
     ]),
     unless  => join([
-        'test -x /home/asottile/opt/venv/bin/python && ',
-        '/home/asottile/opt/venv/bin/python -c ',
-        '"import cmath, ctypes, datetime, io, os, ssl, weakref"',
+        "test -x ${venv}/bin/python && ",
+        "info=\"$(${venv}/bin/python -S -c 'import sys;print(\".\".join(str(p) for p in sys.version_info))')\" && ",
+        "grep \"^version_info = \$info$\" ${venv}/pyvenv.cfg",
     ]),
     user    => 'asottile',
     path    => '/usr/sbin:/usr/bin:/bin',
@@ -25,23 +27,23 @@ class desktop::venv {
   #     packages => $packages,
   # }
   $packages.each |$pkg| {
-    exec { "pip install ${pkg} into ~/opt/venv":
-      command => "/home/asottile/opt/venv/bin/pip install ${pkg}",
-      unless  => "/home/asottile/opt/venv/bin/pip freeze | grep '^${pkg}=='",
+    exec { "pip install ${pkg} into ${venv}":
+      command => "${venv}/bin/pip install ${pkg}",
+      unless  => "${venv}/bin/pip freeze | grep '^${pkg}=='",
       user    => 'asottile',
-      require => Exec['create ~/opt/venv'],
+      require => Exec["create ${venv}"],
     }
   }
 
   $packages.each |$bin| {
     file { "/home/asottile/bin/${bin}":
       ensure  => 'link',
-      target  => "/home/asottile/opt/venv/bin/${bin}",
+      target  => "${venv}/bin/${bin}",
       owner   => 'asottile',
       group   => 'asottile',
       require => [
         File['/home/asottile/bin'],
-        Exec["pip install ${bin} into ~/opt/venv"],
+        Exec["pip install ${bin} into ${venv}"],
       ],
     }
   }
