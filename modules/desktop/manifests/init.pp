@@ -6,6 +6,7 @@ class desktop {
   include desktop::go
   include desktop::homedir
   include desktop::launcher
+  include desktop::packer
   include desktop::pidgin
   include desktop::purged
   include desktop::pypy
