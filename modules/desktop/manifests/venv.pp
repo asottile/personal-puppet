@@ -4,22 +4,7 @@ class desktop::venv {
   ]
   $venv = '/home/asottile/opt/venv'
 
-  exec { "create ${venv}":
-    command => join([
-      "rm -rf ${venv} && ",
-      'curl --silent --location --output /tmp/virtualenv.pyz https://bootstrap.pypa.io/virtualenv.pyz && ',
-      "python3 /tmp/virtualenv.pyz ${venv} && ",
-      'rm -rf /tmp/virtualenv.pyz',
-    ]),
-    unless  => join([
-        "test -x ${venv}/bin/python && ",
-        "info=\"$(${venv}/bin/python -S -c 'import sys;print(\".\".join(str(p) for p in sys.version_info))')\" && ",
-        "grep \"^version_info = \$info$\" ${venv}/pyvenv.cfg",
-    ]),
-    user    => 'asottile',
-    path    => '/usr/sbin:/usr/bin:/bin',
-    require => [Package['curl'], File['/home/asottile/opt']],
-  }
+  util::virtualenv { $venv: venv => $venv }
 
   # TODO: this is quite slow, ideally I'd like something like
   # venv { '/home/asottile/opt/venv':
@@ -27,11 +12,10 @@ class desktop::venv {
   #     packages => $packages,
   # }
   $packages.each |$pkg| {
-    exec { "pip install ${pkg} into ${venv}":
-      command => "${venv}/bin/pip install ${pkg}",
-      unless  => "${venv}/bin/pip freeze | grep '^${pkg}=='",
-      user    => 'asottile',
-      require => Exec["create ${venv}"],
+    util::pip {"${venv}(${pkg})":
+      pkg     => $pkg,
+      venv    => $venv,
+      require => Util::Virtualenv[$venv],
     }
   }
 
@@ -43,8 +27,23 @@ class desktop::venv {
       group   => 'asottile',
       require => [
         File['/home/asottile/bin'],
-        Exec["pip install ${bin} into ${venv}"],
+        Util::Pip["${venv}(${bin})"],
       ],
     }
+  }
+
+  # awscli does some sketchy shit so give it its own venv
+  $venv_aws = '/home/asottile/opt/venv_awscli'
+  util::virtualenv { $venv_aws: venv => $venv_aws } ->
+  util::pip { "${venv_aws}(awscli)": pkg => 'awscli', venv => $venv_aws} ->
+  file { '/home/asottile/bin/aws':
+    ensure  => 'link',
+    target  => "${venv_aws}/bin/aws",
+    owner   => 'asottile',
+    group   => 'asottile',
+    require => [
+      File['/home/asottile/bin'],
+      Util::Pip["${venv_aws}(awscli)"],
+    ],
   }
 }
