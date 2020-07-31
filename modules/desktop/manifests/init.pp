@@ -11,6 +11,7 @@ class desktop {
   include desktop::purged
   include desktop::pypy
   include desktop::screensaver
+  include desktop::terraform
   include desktop::venv
   include desktop::virtualbox
   include desktop::workspace
