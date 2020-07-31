@@ -32,8 +32,8 @@ class desktop::venv {
     }
   }
 
-  # awscli does some sketchy shit so give it its own venv
-  $venv_aws = '/home/asottile/opt/venv_awscli'
+  # awscli deps conflict a lot so put them in their own environment
+  $venv_aws = '/home/asottile/opt/awscli'
   util::virtualenv { $venv_aws: venv => $venv_aws } ->
   util::pip { "${venv_aws}(awscli)": pkg => 'awscli', venv => $venv_aws} ->
   file { '/home/asottile/bin/aws':
