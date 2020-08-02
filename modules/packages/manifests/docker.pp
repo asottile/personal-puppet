@@ -13,5 +13,10 @@ class packages::docker {
   package { 'docker-ce':
     ensure  => 'purged',
     require => Exec['apt_update'],
+  } ->
+  file { '/var/lib/docker':
+    ensure  => 'absent',
+    force   => true,
+    recurse => true,
   }
 }
