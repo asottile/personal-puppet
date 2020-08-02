@@ -30,16 +30,8 @@ class desktop::go {
     }
   }
 
-  # this is no longer present in modern go
-  file { '/home/asottile/bin/godoc':
-    ensure => 'absent',
-  }
-
   # purge old versions, remove when updated
   file { [
-    '/home/asottile/opt/go',
-    '/home/asottile/opt/go1.12.5.linux-amd64',
-    '/home/asottile/opt/go1.13.5.linux-amd64',
   ]:
     ensure  => 'absent',
     recurse => true,

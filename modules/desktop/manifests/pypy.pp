@@ -56,14 +56,6 @@ class desktop::pypy {
 
   # purge old versions, remove when updated
   file { [
-    '/home/asottile/opt/pypy2-v6.0.0-linux64',
-    '/home/asottile/opt/pypy3-v6.0.0-linux64',
-    '/home/asottile/opt/pypy2.7-v7.1.1-linux64',
-    '/home/asottile/opt/pypy3.6-v7.1.1-linux64',
-    '/home/asottile/opt/pypy2.7-v7.2.0-linux64',
-    '/home/asottile/opt/pypy3.6-v7.2.0-linux64',
-    '/home/asottile/opt/pypy2.7-v7.3.0-linux64',
-    '/home/asottile/opt/pypy3.6-v7.3.0-linux64',
   ]:
     ensure  => 'absent',
     recurse => true,

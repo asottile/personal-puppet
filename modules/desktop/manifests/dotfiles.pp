@@ -39,11 +39,6 @@ class desktop::dotfiles {
       require => Vcsrepo['/home/asottile/workspace/scratch'],
   }
 
-  # previous dotfiles, removed
-  file { ['/home/asottile/.pdbrc', '/home/asottile/nanorc']:
-    ensure => 'absent'
-  }
-
   $binfiles.each |$f| {
     file { "/home/asottile/bin/${basename($f)}":
       ensure  => 'link',
