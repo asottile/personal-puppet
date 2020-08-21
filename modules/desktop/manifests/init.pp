@@ -1,13 +1,13 @@
 class desktop {
   include desktop::apple_touchpad
   include desktop::background
-  include desktop::docker
   include desktop::dotfiles
   include desktop::go
   include desktop::homedir
   include desktop::launcher
   include desktop::packer
   include desktop::pidgin
+  include desktop::podman
   include desktop::purged
   include desktop::pypy
   include desktop::screensaver

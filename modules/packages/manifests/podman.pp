@@ -7,7 +7,7 @@ class packages::podman {
     release  => '',
     repos    => '/',
   } ->
-  package { ['buildah', 'podman']:
+  package { ['buildah', 'fuse-overlayfs', 'podman']:
     ensure  => 'latest',
     require => Exec['apt_update'],
   }
