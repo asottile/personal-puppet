@@ -2,7 +2,6 @@
 import os.path
 import subprocess
 import sys
-from typing import NoReturn
 from typing import Tuple
 
 
@@ -31,7 +30,7 @@ def _msg(s: str) -> None:
     print('=' * 79, flush=True)
 
 
-def main() -> NoReturn:
+def main() -> int:
     if subprocess.call(('ssh-add', '-l'), stdout=subprocess.DEVNULL):
         subprocess.check_call('ssh-add')
 
@@ -50,18 +49,21 @@ def main() -> NoReturn:
     subprocess.check_call(('r10k', 'puppetfile', 'purge'), cwd=HERE)
 
     _msg('Execing puppet')
-    cmd = (
+    ret = subprocess.call((
         'sudo', 'env',
         'RUBYOPT=-W0',
         'PATH={}'.format(os.environ['PATH']),
         'GEM_HOME={}'.format(os.environ['GEM_HOME']),
         'SSH_AUTH_SOCK={}'.format(os.environ['SSH_AUTH_SOCK']),
-        'puppet', 'apply', '-v', '--show_diff',
+        'puppet', 'apply', '-v', '--show_diff', '--detailed-exitcodes',
         '--modulepath', MODULE_PATH,
         os.path.join(HERE, 'manifests/site.pp'),
         *sys.argv[1:],
-    )
-    os.execvp(cmd[0], cmd)
+    ))
+    if ret in {0, 2}:  # {no changes, changes}
+        return 0
+    else:
+        return 1
 
 
 if __name__ == '__main__':
