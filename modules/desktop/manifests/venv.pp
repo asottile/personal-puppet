@@ -46,4 +46,18 @@ class desktop::venv {
       Util::Pip["${venv_aws}(awscli)"],
     ],
   }
+
+  $venv_az = '/home/asottile/opt/azcli'
+  util::virtualenv { $venv_az: venv => $venv_az } ->
+  util::pip { "${venv_az}(azure-cli)": pkg => 'azure-cli', venv => $venv_az} ->
+  file { '/home/asottile/bin/az':
+    ensure  => 'link',
+    target  => "${venv_az}/bin/az",
+    owner   => 'asottile',
+    group   => 'asottile',
+    require => [
+      File['/home/asottile/bin'],
+      Util::Pip["${venv_az}(azure-cli)"],
+    ],
+  }
 }
