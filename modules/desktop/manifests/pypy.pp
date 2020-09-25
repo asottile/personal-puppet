@@ -1,14 +1,14 @@
 class desktop::pypy {
   # https://pypy.org/download.html
 
-  $pypy2 = 'pypy2.7-v7.3.1-linux64'
-  $pypy2_sha256 = 'be74886547df7bf7094096a11fc0a48496779d0d1b71901797b0c816f92caca3'
-  $pypy3 = 'pypy3.6-v7.3.1-linux64'
-  $pypy3_sha256 = 'f67cf1664a336a3e939b58b3cabfe47d893356bdc01f2e17bc912aaa6605db12'
+  $pypy2 = 'pypy2.7-v7.3.2-linux64'
+  $pypy2_sha256 = '8d4f08116a97153a0f739de8981874d544b564cbc87dd064cca33f36c29da13b'
+  $pypy3 = 'pypy3.7-v7.3.2-linux64'
+  $pypy3_sha256 = 'a285ddcbc909d68c648585fae4f33b0ba24961bb4e8fafe5874cf725d6e83df6'
 
   archive { "/tmp/${pypy2}.tar.bz2":
     ensure        => 'present',
-    source        => "https://bitbucket.org/pypy/pypy/downloads/${pypy2}.tar.bz2",
+    source        => "https://downloads.python.org/pypy/${pypy2}.tar.bz2",
     checksum      => $pypy2_sha256,
     checksum_type => 'sha256',
     extract       => true,
@@ -33,7 +33,7 @@ class desktop::pypy {
 
   archive { "/tmp/${pypy3}.tar.bz2":
     ensure        => 'present',
-    source        => "https://bitbucket.org/pypy/pypy/downloads/${pypy3}.tar.bz2",
+    source        => "https://downloads.python.org/pypy/${pypy3}.tar.bz2",
     checksum      => $pypy3_sha256,
     checksum_type => 'sha256',
     extract       => true,
@@ -56,6 +56,8 @@ class desktop::pypy {
 
   # purge old versions, remove when updated
   file { [
+    '/home/asottile/opt/pypy2.7-v7.3.1-linux64',
+    '/home/asottile/opt/pypy3.6-v7.3.1-linux64',
   ]:
     ensure  => 'absent',
     recurse => true,
