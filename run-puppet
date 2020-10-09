@@ -39,7 +39,7 @@ def main() -> int:
 
     for gem, version in GEMS:
         if not os.path.exists(os.path.join(GEM_HOME, f'gems/{gem}-{version}')):
-            _msg('Ensuring {} is installed...'.format(gem))
+            _msg(f'Ensuring {gem} is installed...')
             cmd: Tuple[str, ...]
             cmd = ('gem', 'install', gem, '-v', version, '--no-document')
             subprocess.check_call(cmd)
