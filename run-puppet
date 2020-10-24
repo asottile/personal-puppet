@@ -11,7 +11,6 @@ PERSONAL_PUPPET = os.path.join(
 )
 GEM_HOME = os.path.join(PERSONAL_PUPPET, 'gems')
 GEM_BIN = os.path.join(GEM_HOME, 'bin')
-PUPPET_BIN = os.path.join(GEM_BIN, 'puppet')
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
