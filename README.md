@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/asottile.personal-puppet?branchName=master)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=10&branchName=master)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/asottile/personal-puppet/master.svg)](https://results.pre-commit.ci/latest/github/asottile/personal-puppet/master)
 
 personal-puppet
 ===============
