@@ -1,8 +1,8 @@
 class desktop::terraform {
   # https://www.terraform.io/downloads.html
 
-  $version = '0.12.29'
-  $checksum = '872245d9c6302b24dc0d98a1e010aef1e4ef60865a2d1f60102c8ad03e9d5a1d'
+  $version = '0.13.5'
+  $checksum = 'f7b7a7b1bfbf5d78151cfe3d1d463140b5fd6a354e71a7de2b5644e652ca5147'
 
   file { "/home/asottile/opt/terraform-${version}":
     ensure  => 'directory',
@@ -28,5 +28,14 @@ class desktop::terraform {
     owner   => 'asottile',
     group   => 'asottile',
     require => File['/home/asottile/bin'],
+  }
+
+  # purge old versions, remove when updated
+  file { [
+    '/home/asottile/opt/terraform-0.12.29',
+  ]:
+    ensure  => 'absent',
+    recurse => true,
+    force   => true,
   }
 }
