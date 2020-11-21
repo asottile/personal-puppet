@@ -1,6 +1,7 @@
 class desktop::venv {
   $packages = [
-    'aactivator', 'babi', 'flake8', 'pre-commit', 'tox', 'twine', 'virtualenv',
+    'aactivator', 'awshelp', 'babi', 'flake8', 'pre-commit', 'tox', 'twine',
+    'virtualenv',
   ]
   $venv = '/home/asottile/opt/venv'
 
