@@ -7,7 +7,9 @@ class packages::podman {
     release  => '',
     repos    => '/',
   } ->
-  package { ['buildah', 'fuse-overlayfs', 'podman']:
+  # TODO: remove once updated
+  package { ['podman']: ensure => 'purged' } ->
+  package { ['buildah', 'fuse-overlayfs', 'podman-rootless']:
     ensure  => 'latest',
     require => Exec['apt_update'],
   }
