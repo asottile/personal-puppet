@@ -6,7 +6,7 @@ class desktop::dotfiles {
   $binfiles = [
     'bash/git-happy-merge', 'python/git-github-compare',
     'python/git-github-fork', 'python/git-github-url',
-    'python/inotify-exec', 'python/prune-remote-branches.py',
+    'python/inotify-exec', 'python/prune-remote-branches',
   ]
 
   vcsrepo { '/home/asottile/workspace/scratch':
@@ -59,4 +59,7 @@ class desktop::dotfiles {
     group  => 'asottile',
     mode   => '0600',
   }
+
+  # TODO: remove eventually
+  file { '/home/asottile/bin/prune-remote-branches.py': ensure => 'absent' }
 }
