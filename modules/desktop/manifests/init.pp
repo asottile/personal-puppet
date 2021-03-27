@@ -16,6 +16,7 @@ class desktop {
   include desktop::virtualbox
   include desktop::workspace
 
+  include packages::arduino
   include packages::debian_packaging
   include packages::build_deps
   include packages::editors
