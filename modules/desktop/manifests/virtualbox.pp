@@ -1,5 +1,5 @@
 class desktop::virtualbox {
-  if $::is_virtual {
+  if $::is_virtual and $::virtual == 'virtualbox' {
     exec { 'add asottile to vboxsf group':
       command => 'usermod --append --groups vboxsf asottile',
       unless  => join([
