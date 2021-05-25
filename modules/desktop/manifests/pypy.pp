@@ -1,10 +1,10 @@
 class desktop::pypy {
   # https://pypy.org/download.html
 
-  $pypy2 = 'pypy2.7-v7.3.3-linux64'
-  $pypy2_sha256 = 'f412b602ccd6912ddee0e7523e0e38f4b2c7a144449c2cad078cffbdb66fd7b1'
-  $pypy3 = 'pypy3.7-v7.3.3-linux64'
-  $pypy3_sha256 = '37e2804c4661c86c857d709d28c7de716b000d31e89766599fdf5a98928b7096'
+  $pypy2 = 'pypy2.7-v7.3.5-linux64'
+  $pypy2_sha256 = '4858b347801fba3249ad90af015b3aaec9d57f54d038a58d806a1bd3217d5150'
+  $pypy3 = 'pypy3.7-v7.3.5-linux64'
+  $pypy3_sha256 = '9000db3e87b54638e55177e68cbeb30a30fe5d17b6be48a9eb43d65b3ebcfc26'
 
   archive { "/tmp/${pypy2}.tar.bz2":
     ensure        => 'present',
@@ -60,6 +60,8 @@ class desktop::pypy {
     '/home/asottile/opt/pypy3.6-v7.3.1-linux64',
     '/home/asottile/opt/pypy2.7-v7.3.2-linux64',
     '/home/asottile/opt/pypy3.7-v7.3.2-linux64',
+    '/home/asottile/opt/pypy2.7-v7.3.3-linux64',
+    '/home/asottile/opt/pypy3.7-v7.3.3-linux64',
   ]:
     ensure  => 'absent',
     recurse => true,
