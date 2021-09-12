@@ -1,7 +1,7 @@
 class desktop::go {
   # https://golang.org/dl/
-  $go = 'go1.16.linux-amd64'
-  $sha256 = '013a489ebb3e24ef3d915abe5b94c3286c070dfe0818d5bca8108f1d6e8440d2'
+  $go = 'go1.17.1.linux-amd64'
+  $sha256 = 'dab7d9c34361dc21ec237d584590d72500652e7c909bf082758fb63064fca0ef'
 
   file { "/home/asottile/opt/${go}":
     ensure => 'directory',
@@ -33,6 +33,7 @@ class desktop::go {
   # purge old versions, remove when updated
   file { [
     '/home/asottile/opt/go1.14.2.linux-amd64',
+    '/home/asottile/opt/go1.16.linux-amd64',
   ]:
     ensure  => 'absent',
     recurse => true,
