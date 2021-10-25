@@ -1,35 +1,8 @@
 class desktop::pypy {
   # https://pypy.org/download.html
 
-  $pypy2 = 'pypy2.7-v7.3.6-linux64'
-  $pypy2_sha256 = '82127f43fae6ce75d47d6c4539f8c1ea372e9c2dbfa40fae8b58351d522793a4'
-  $pypy3 = 'pypy3.8-v7.3.6-linux64'
-  $pypy3_sha256 = '8579ea990e95d2b7e101ef47fd9ebf25a9500d5086e8f708c43f9bae83306ece'
-
-  archive { "/tmp/${pypy2}.tar.bz2":
-    ensure        => 'present',
-    source        => "https://downloads.python.org/pypy/${pypy2}.tar.bz2",
-    checksum      => $pypy2_sha256,
-    checksum_type => 'sha256',
-    extract       => true,
-    extract_path  => '/home/asottile/opt',
-    creates       => "/home/asottile/opt/${pypy2}/bin/pypy",
-    user          => 'asottile',
-    group         => 'asottile',
-    require       => [Package['curl'], File['/home/asottile/opt']],
-  }
-  ['pypy', 'pypy2'].each |$bin| {
-    file { "/home/asottile/bin/${bin}":
-      ensure  => 'link',
-      target  => "/home/asottile/opt/${pypy2}/bin/pypy",
-      owner   => 'asottile',
-      group   => 'asottile',
-      require => [
-        File['/home/asottile/bin'],
-        Archive["/tmp/${pypy2}.tar.bz2"],
-      ],
-    }
-  }
+  $pypy3 = 'pypy3.8-v7.3.7-linux64'
+  $pypy3_sha256 = '5dee37c7c3cb8b160028fbde3a5901c68043dfa545a16794502b897d4bc40d7e'
 
   archive { "/tmp/${pypy3}.tar.bz2":
     ensure        => 'present',
@@ -64,9 +37,16 @@ class desktop::pypy {
     '/home/asottile/opt/pypy3.7-v7.3.3-linux64',
     '/home/asottile/opt/pypy2.7-v7.3.5-linux64',
     '/home/asottile/opt/pypy3.7-v7.3.5-linux64',
+    '/home/asottile/opt/pypy2.7-v7.3.6-linux64',
+    '/home/asottile/opt/pypy3.8-v7.3.6-linux64',
   ]:
     ensure  => 'absent',
     recurse => true,
     force   => true,
+  }
+  ['pypy', 'pypy2'].each |$bin| {
+    file { "/home/asottile/bin/${bin}":
+      ensure  => 'absent',
+    }
   }
 }
