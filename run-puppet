@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import os.path
 import subprocess
 import sys
@@ -39,7 +41,7 @@ def main() -> int:
     for gem, version in GEMS:
         if not os.path.exists(os.path.join(GEM_HOME, f'gems/{gem}-{version}')):
             _msg(f'Ensuring {gem} is installed...')
-            cmd: Tuple[str, ...]
+            cmd: tuple[str, ...]
             cmd = ('gem', 'install', gem, '-v', version, '--no-document')
             subprocess.check_call(cmd)
 
