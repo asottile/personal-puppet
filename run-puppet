@@ -4,7 +4,6 @@ from __future__ import annotations
 import os.path
 import subprocess
 import sys
-from typing import Tuple
 
 
 PERSONAL_PUPPET = os.path.join(
