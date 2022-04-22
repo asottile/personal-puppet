@@ -17,10 +17,8 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
 GEMS = (
-    ('puppet', '5.5.21'),
-    ('r10k', '3.5.2'),
-    # TODO: puppet 5.x is broken on ruby 2.7
-    ('sync', '0.5.0'),
+    ('puppet', '7.16.0'),
+    ('r10k', '3.14.2'),
 )
 
 
