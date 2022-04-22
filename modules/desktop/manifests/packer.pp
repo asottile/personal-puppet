@@ -1,8 +1,8 @@
 class desktop::packer {
-  # https://www.packer.io/downloads.html
+  # https://releases.hashicorp.com/packer/
 
-  $version = '1.6.4'
-  $checksum = 'a20ec68e9eb6e1d6016481003f705babbecc28e234f8434f3a35f675cb200ea8'
+  $version = '1.8.0'
+  $checksum = '94c5d65386fa8f17e36d3496fbbdf18d3bfab01306aa8000c14656b63070b7c2'
 
   file { "/home/asottile/opt/packer-${version}":
     ensure  => 'directory',
@@ -33,6 +33,7 @@ class desktop::packer {
   # purge old versions, remove when updated
   file { [
     '/home/asottile/opt/packer-1.6.1',
+    '/home/asottile/opt/packer-1.6.4',
   ]:
     ensure  => 'absent',
     recurse => true,
