@@ -4,7 +4,8 @@ class desktop::dotfiles {
     '.pypirc', '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
-    'bash/git-happy-merge', 'python/bump', 'python/git-github-compare',
+    'bash/git-happy-merge', 'python/best-of', 'python/bump',
+    'python/git-github-compare',
     'python/git-github-fork', 'python/git-github-url',
     'python/inotify-exec', 'python/prune-remote-branches',
   ]
