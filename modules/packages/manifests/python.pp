@@ -7,7 +7,7 @@ class packages::python {
   }
 
   $deadsnakes_pkgs = [
-    'python3.6-dev',
+    'python3.6-dev', 'python3.6-distutils',
     'python3.7-dev', 'python3.7-distutils',
     'python3.9-dev',
     'python3.10-dev', 'python3.10-distutils',
