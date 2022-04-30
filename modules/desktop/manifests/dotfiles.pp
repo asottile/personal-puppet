@@ -47,7 +47,4 @@ class desktop::dotfiles {
     group  => 'asottile',
     mode   => '0600',
   }
-
-  # TODO: remove eventually
-  file { '/home/asottile/bin/prune-remote-branches.py': ensure => 'absent' }
 }

@@ -5,6 +5,7 @@ class desktop::homedir {
     '/home/asottile/Public',
     '/home/asottile/Templates',
     '/home/asottile/Videos',
+    '/home/asottile/snap',
   ]:
     ensure  => 'absent',
     recurse => true,
