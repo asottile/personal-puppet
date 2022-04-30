@@ -6,6 +6,7 @@ class desktop {
   include desktop::go
   include desktop::homedir
   include desktop::launcher
+  include desktop::node
   include desktop::packer
   include desktop::pidgin
   include desktop::podman
