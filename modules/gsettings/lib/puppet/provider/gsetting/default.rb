@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'ripper'
 
@@ -7,7 +9,7 @@ def _parse_inner(sexp)
     inner, = sexp[1]
     _parse_inner(inner)
   when :string_literal, :dyna_symbol
-    return sexp[1][1][1]
+    sexp[1][1][1]
   when :@int
     sexp[1].to_i
   when :@float
@@ -20,7 +22,7 @@ def _parse_inner(sexp)
     kvs = sexp[1][1].map do |kv|
       [_parse_inner(kv[1]), _parse_inner(kv[2])]
     end
-    Hash[kvs]
+    kvs.to_h
   else
     raise "notimplemented #{sexp[0]}"
   end
@@ -47,7 +49,7 @@ Puppet::Type.type(:gsetting).provide(:default) do
   commands gsettings: 'gsettings'
 
   def schema_key
-    @resource[:name].split(' ')
+    @resource[:name].split
   end
 
   def get
