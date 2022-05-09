@@ -1,4 +1,6 @@
-NAME_RE = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)* [a-zA-Z0-9_-]+$/
+# frozen_string_literal: true
+
+NAME_RE = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)* [a-zA-Z0-9_-]+$/.freeze
 
 def _bool_to_puppet(b)
   { true => ':true', false => ':false', nil => ':nil' }.fetch(b, b)
@@ -13,9 +15,7 @@ Puppet::Type.newtype(:gsetting) do
     desc 'In the form: `SCHEMA KEY`'
 
     validate do |value|
-      unless value.is_a?(String) && value =~ NAME_RE
-        raise ArgumentError, "#{value} must be `SCHEMA KEY`"
-      end
+      raise ArgumentError, "#{value} must be `SCHEMA KEY`" unless value.is_a?(String) && value =~ NAME_RE
     end
   end
 

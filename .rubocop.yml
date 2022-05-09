@@ -1,3 +1,11 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: '2.6'
+
+Layout:
+  Metrics/LineLength:
+    IgnoreCopDirectives: true
+
 Metrics/AbcSize:
   Max: 30
 Metrics/BlockLength:
@@ -6,5 +14,5 @@ Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/MethodLength:
   Max: 30
-Metrics/LineLength:
-  IgnoreCopDirectives: true
+Naming/MethodParameterName:
+  Enabled: false
