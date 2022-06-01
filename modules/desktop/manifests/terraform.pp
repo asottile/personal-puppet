@@ -30,14 +30,10 @@ class desktop::terraform {
     require => File['/home/asottile/bin'],
   }
 
-  # purge old versions, remove when updated
-  file { [
-    '/home/asottile/opt/terraform-0.12.29',
-    '/home/asottile/opt/terraform-0.13.5',
-    '/home/asottile/opt/terraform-0.14.5',
-  ]:
-    ensure  => 'absent',
-    recurse => true,
-    force   => true,
+  tidy { 'purge old terraform versions':
+    path    => '/home/asottile/opt',
+    recurse => 1,
+    rmdirs  => true,
+    matches => ['terraform-*'],
   }
 }

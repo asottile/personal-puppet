@@ -30,13 +30,10 @@ class desktop::packer {
     require => File['/home/asottile/bin'],
   }
 
-  # purge old versions, remove when updated
-  file { [
-    '/home/asottile/opt/packer-1.6.1',
-    '/home/asottile/opt/packer-1.6.4',
-  ]:
-    ensure  => 'absent',
-    recurse => true,
-    force   => true,
+  tidy { 'purge old packer versions':
+    path    => '/home/asottile/opt',
+    recurse => 1,
+    rmdirs  => true,
+    matches => ['packer-*'],
   }
 }

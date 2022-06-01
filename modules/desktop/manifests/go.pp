@@ -4,9 +4,10 @@ class desktop::go {
   $sha256 = 'e85278e98f57cdb150fe8409e6e5df5343ecb13cebf03a5d5ff12bd55a80264f'
 
   file { "/home/asottile/opt/${go}":
-    ensure => 'directory',
-    owner  => 'asottile',
-    group  => 'asottile',
+    ensure  => 'directory',
+    owner   => 'asottile',
+    group   => 'asottile',
+    require => File['/home/asottile/opt'],
   } ->
   archive { "/tmp/${go}.tar.gz":
     ensure        => 'present',
@@ -18,7 +19,7 @@ class desktop::go {
     creates       => "/home/asottile/opt/${go}/go/bin/go",
     user          => 'asottile',
     group         => 'asottile',
-    require       => [Package['curl'], File['/home/asottile/opt']],
+    require       => Package['curl'],
   }
   ['go', 'gofmt'].each |$bin| {
     file { "/home/asottile/bin/${bin}":
@@ -30,14 +31,10 @@ class desktop::go {
     }
   }
 
-  # purge old versions, remove when updated
-  file { [
-    '/home/asottile/opt/go1.14.2.linux-amd64',
-    '/home/asottile/opt/go1.16.linux-amd64',
-    '/home/asottile/opt/go1.17.1.linux-amd64',
-  ]:
-    ensure  => 'absent',
-    recurse => true,
-    force   => true
+  tidy { 'purge old go versions':
+    path    => '/home/asottile/opt',
+    recurse => 1,
+    rmdirs  => true,
+    matches => ['go*'],
   }
 }
