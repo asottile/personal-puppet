@@ -9,7 +9,7 @@ desktop::node::sha256: 'ffe94f0a3804e186b53f9480f4ef3a0c9ec450d7da45526438f6d37b
 
 # https://releases.hashicorp.com/packer/
 desktop::packer::version: '1.8.0'
-desktop::packer::archive_name: 'packer_1.8.0_linux_amd64.zip'
+desktop::packer::archive_name: 'packer_1.8.0_linux_amd64'
 desktop::packer::sha256: '94c5d65386fa8f17e36d3496fbbdf18d3bfab01306aa8000c14656b63070b7c2'
 
 # https://pypy.org/download.html
@@ -18,5 +18,5 @@ desktop::pypy::sha256: '46818cb3d74b96b34787548343d266e2562b531ddbaf330383ba930f
 
 # https://www.terraform.io/downloads.html
 desktop::terraform::version: '1.0.1'
-desktop::terraform::archive_name: 'terraform_1.0.1_linux_amd64.zip'
+desktop::terraform::archive_name: 'terraform_1.0.1_linux_amd64'
 desktop::terraform::sha256: 'da94657593636c8d35a96e4041136435ff58bb0061245b7d0f82db4a7728cef3'
