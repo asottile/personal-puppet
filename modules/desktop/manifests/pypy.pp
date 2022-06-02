@@ -1,9 +1,4 @@
-class desktop::pypy {
-  # https://pypy.org/download.html
-
-  $pypy3 = 'pypy3.9-v7.3.9-linux64'
-  $pypy3_sha256 = '46818cb3d74b96b34787548343d266e2562b531ddbaf330383ba930ff1930ed5'
-
+class desktop::pypy(String $pypy3, String $sha256) {
   file { "/home/asottile/opt/${pypy3}":
     ensure  => 'directory',
     owner   => 'asottile',
@@ -13,7 +8,7 @@ class desktop::pypy {
   archive { "/tmp/${pypy3}.tar.bz2":
     ensure        => 'present',
     source        => "https://downloads.python.org/pypy/${pypy3}.tar.bz2",
-    checksum      => $pypy3_sha256,
+    checksum      => $sha256,
     checksum_type => 'sha256',
     extract       => true,
     extract_flags => {'tar' => '--strip-components=1 -xf'},

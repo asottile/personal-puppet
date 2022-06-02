@@ -1,10 +1,4 @@
-class desktop::node {
-  # https://nodejs.org/dist
-
-  $node = 'v18.0.0'
-  $archive_name = "node-${node}-linux-x64"
-  $node_sha256 = 'ffe94f0a3804e186b53f9480f4ef3a0c9ec450d7da45526438f6d37be9f4d22e'
-
+class desktop::node(String $node, String $archive_name, String $sha256) {
   file { "/home/asottile/opt/${archive_name}":
     ensure  => 'directory',
     owner   => 'asottile',
@@ -14,7 +8,7 @@ class desktop::node {
   archive { "/tmp/${archive_name}.tar.xz":
     ensure        => 'present',
     source        => "https://nodejs.org/dist/${node}/${archive_name}.tar.xz",
-    checksum      => $node_sha256,
+    checksum      => $sha256,
     checksum_type => 'sha256',
     extract       => true,
     extract_flags => {'unxz' => '-c', 'tar' => '--strip-components=1 -xf'},

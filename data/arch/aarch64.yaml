@@ -1,0 +1,22 @@
+# https://golang.org/dl/
+desktop::go::go: 'go1.18.linux-arm64'
+desktop::go::sha256: '7ac7b396a691e588c5fb57687759e6c4db84a2a3bbebb0765f4b38e5b1c5b00e'
+
+# https://nodejs.org/dist
+desktop::node::node: 'v18.0.0'
+desktop::node::archive_name: 'node-v18.0.0-linux-arm64'
+desktop::node::sha256: 'e91baabfccaecc41aa69eb5580ae4a74730862c562c748a4691a8b2a0d594b88'
+
+# https://releases.hashicorp.com/packer/
+desktop::packer::version: '1.8.0'
+desktop::packer::archive_name: 'packer_1.8.0_linux_arm64.zip'
+desktop::packer::sha256: '8b3a8768021b148ada2cbdf1c39f55d92e4280147ceb5f76f840a7adf50edce2'
+
+# https://pypy.org/download.html
+desktop::pypy::pypy3: 'pypy3.9-v7.3.9-aarch64'
+desktop::pypy::sha256: '2e1ae193d98bc51439642a7618d521ea019f45b8fb226940f7e334c548d2b4b9'
+
+# https://releases.hashicorp.com/terraform/
+desktop::terraform::version: '1.0.1'
+desktop::terraform::archive_name: 'terraform_1.0.1_linux_arm64.zip'
+desktop::terraform::sha256: 'af9c579d59e5180e563a12a69f5acb95fcc61ec2a39ac24aaf13aee33463760c'

@@ -1,0 +1,4 @@
+version: 5
+hierarchy:
+    -   name: "by architecture"
+        path: arch/%{facts.os.architecture}.yaml

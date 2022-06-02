@@ -1,8 +1,4 @@
-class desktop::go {
-  # https://golang.org/dl/
-  $go = 'go1.18.linux-amd64'
-  $sha256 = 'e85278e98f57cdb150fe8409e6e5df5343ecb13cebf03a5d5ff12bd55a80264f'
-
+class desktop::go(String $go, String $sha256) {
   file { "/home/asottile/opt/${go}":
     ensure  => 'directory',
     owner   => 'asottile',
