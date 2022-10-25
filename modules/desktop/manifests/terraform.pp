@@ -29,6 +29,6 @@ class desktop::terraform(String $version, String $archive_name, String $sha256) 
     path    => '/home/asottile/opt',
     recurse => 1,
     rmdirs  => true,
-    matches => ['terraform-*'],
+    matches => ['terraform_*'],
   }
 }
