@@ -12,6 +12,7 @@ class packages::python {
     'python3.9-dev',
     'python3.10-dev', 'python3.10-distutils',
     'python3.11-dev', 'python3.11-distutils',
+    'python3.12-dev', 'python3.12-distutils',
   ]
   apt::ppa { 'ppa:deadsnakes/ppa': } ->
   package { $deadsnakes_pkgs:
