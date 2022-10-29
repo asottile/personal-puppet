@@ -6,10 +6,4 @@ class desktop::podman {
     group   => 'asottile',
     require => [Package['podman'], File['/home/asottile/bin']],
   }
-
-  file { '/home/asottile/.config/containers':
-    ensure  => 'absent',
-    recurse => true,
-    force   => true,
-  }
 }

@@ -14,4 +14,12 @@ class desktop::launcher {
     ensure => ':true',
     user   => 'asottile',
   }
+  gsetting { 'org.gnome.shell.extensions.dash-to-dock dock-position':
+    ensure => 'RIGHT',
+    user   => 'asottile',
+  }
+  gsetting { 'org.gnome.shell.extensions.ding show-home':
+    ensure => ':false',
+    user   => 'asottile',
+  }
 }
