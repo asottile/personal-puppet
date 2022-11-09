@@ -18,6 +18,10 @@ class desktop::launcher {
     ensure => 'RIGHT',
     user   => 'asottile',
   }
+  gsetting { 'org.gnome.shell.extensions.dash-to-dock show-mounts':
+    ensure => ':false',
+    user   => 'asottile',
+  }
   gsetting { 'org.gnome.shell.extensions.ding show-home':
     ensure => ':false',
     user   => 'asottile',
