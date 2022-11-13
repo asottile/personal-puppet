@@ -1,5 +1,4 @@
 class desktop {
-  include desktop::apple_touchpad
   include desktop::arduino
   include desktop::background
   include desktop::dotfiles
@@ -14,6 +13,7 @@ class desktop {
   include desktop::pypy
   include desktop::screensaver
   include desktop::terraform
+  include desktop::touchpad
   include desktop::venv
   include desktop::virtualbox
   include desktop::wayland
