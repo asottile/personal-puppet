@@ -7,4 +7,8 @@ class desktop::screensaver {
     ensure => 'nothing',
     user   => 'asottile',
   }
+  gsetting { 'org.gnome.desktop.screensaver lock-enabled':
+    ensure => ':false',
+    user   => 'asottile',
+  }
 }
