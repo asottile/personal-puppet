@@ -7,11 +7,11 @@ Layout:
     IgnoreCopDirectives: true
 
 Metrics/AbcSize:
-  Max: 30
+  Enabled: false
 Metrics/BlockLength:
   Max: 30
 Metrics/CyclomaticComplexity:
-  Max: 10
+  Enabled: false
 Metrics/MethodLength:
   Max: 30
 Naming/MethodParameterName:

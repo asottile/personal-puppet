@@ -4,6 +4,7 @@ class desktop {
   include desktop::dotfiles
   include desktop::go
   include desktop::homedir
+  include desktop::keyboard
   include desktop::launcher
   include desktop::node
   include desktop::packer

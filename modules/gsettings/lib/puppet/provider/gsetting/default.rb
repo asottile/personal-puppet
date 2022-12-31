@@ -17,7 +17,11 @@ def _parse_inner(sexp)
   when :var_ref
     { 'true' => true, 'false' => false, 'nil' => nil }[sexp[1][1]]
   when :array
-    sexp[1].map { |x| _parse_inner(x) }
+    if sexp[1].nil?
+      []
+    else
+      sexp[1].map { |x| _parse_inner(x) }
+    end
   when :hash
     kvs = sexp[1][1].map do |kv|
       [_parse_inner(kv[1]), _parse_inner(kv[2])]
@@ -31,6 +35,8 @@ end
 def literal_eval(s)
   # gsettings has special integer types that don't actually matter
   s.sub!(/^uint32 /, '')
+  # ignore structured types
+  s.sub!(/^@as /, '')
   _parse_inner(Ripper.sexp(s))
 end
 
