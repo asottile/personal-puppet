@@ -17,6 +17,7 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
 GEMS = (
+    ('concurrent-ruby', '1.1.10'),
     ('facter', '4.2.10'),
     ('puppet', '7.21.0'),
     ('r10k', '3.8.0'),
