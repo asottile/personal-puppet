@@ -29,7 +29,7 @@ class desktop {
   include packages::python
   include packages::utilities
 
-  if ! $::is_virtual {
+  if ! $facts['is_virtual'] {
     include packages::vlc
     include packages::virtualbox
   }
