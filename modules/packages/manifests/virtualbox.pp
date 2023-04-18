@@ -4,8 +4,8 @@ class packages::virtualbox {
   } ->
   apt::source { 'virtualbox':
     location     => 'http://download.virtualbox.org/virtualbox/debian',
-    release      => $facts['facts['os']['distro']['codename']'],
-    architecture => $facts['facts['os']['architecture']'],
+    release      => $facts['os']['distro']['codename'],
+    architecture => $facts['os']['architecture'],
     repos        => 'contrib',
   } ->
   package { 'virtualbox-6.1':
