@@ -32,7 +32,7 @@ repos:
     hooks:
     -   id: flake8
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.0
+    rev: v1.5.1
     hooks:
     -   id: mypy
 -   repo: https://github.com/chriskuehl/puppet-pre-commit-hooks
@@ -46,6 +46,6 @@ repos:
         ]
     -   id: puppet-validate
 -   repo: https://github.com/rubocop/rubocop
-    rev: v1.56.0
+    rev: v1.56.1
     hooks:
     -   id: rubocop
