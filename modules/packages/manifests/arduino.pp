@@ -1,3 +1,4 @@
 class packages::arduino {
-  package { ['avr-libc', 'avrdude', 'gcc-avr']: ensure => 'latest'}
+  $packages = ['arduino-core-avr', 'avr-libc', 'avrdude', 'gcc-avr']
+  package { $packages : ensure => 'latest'}
 }
