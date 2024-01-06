@@ -3,9 +3,9 @@ desktop::go::go: 'go1.20.3.linux-amd64'
 desktop::go::sha256: '979694c2c25c735755bf26f4f45e19e64e4811d661dd07b8c010f7a8e18adfca'
 
 # https://nodejs.org/dist
-desktop::node::node: 'v18.0.0'
-desktop::node::archive_name: 'node-v18.0.0-linux-x64'
-desktop::node::sha256: 'ffe94f0a3804e186b53f9480f4ef3a0c9ec450d7da45526438f6d37be9f4d22e'
+desktop::node::node: 'v18.19.0'
+desktop::node::archive_name: 'node-v18.19.0-linux-x64'
+desktop::node::sha256: '61632bb78ee828d6e8f42adc0bc2238a6b8200007093988d3927176a372281e8'
 
 # https://releases.hashicorp.com/packer/
 desktop::packer::version: '1.8.0'
