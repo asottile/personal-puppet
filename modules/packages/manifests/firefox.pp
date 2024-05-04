@@ -1,7 +1,7 @@
 class packages::firefox {
-  apt::ppa { 'ppa:mozillateam/firefox-next': } ->
+  apt::ppa { 'ppa:mozillateam/ppa': } ->
   apt::pin { 'firefox-ppa-pin':
-    originator => 'LP-PPA-mozillateam-firefox-next',
+    originator => 'LP-PPA-mozillateam',
     priority   => 700,
   } ->
   package { 'firefox':
