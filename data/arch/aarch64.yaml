@@ -8,9 +8,9 @@ desktop::node::archive_name: 'node-v18.19.0-linux-arm64'
 desktop::node::sha256: 'cf94ab72e45b855257545fec1c017bdf30a9e23611561382eaf64576b999e72d'
 
 # https://releases.hashicorp.com/packer/
-desktop::packer::version: '1.8.0'
-desktop::packer::archive_name: 'packer_1.8.0_linux_arm64'
-desktop::packer::sha256: '8b3a8768021b148ada2cbdf1c39f55d92e4280147ceb5f76f840a7adf50edce2'
+desktop::packer::version: '1.10.0'
+desktop::packer::archive_name: 'packer_1.10.0_linux_arm64'
+desktop::packer::sha256: '37149ec9ca322aa50f249a645e43e67498b67e785b356c59f9b0f0e6519da78e'
 
 # https://pypy.org/download.html
 desktop::pypy::pypy3: 'pypy3.10-v7.3.12-aarch64'
