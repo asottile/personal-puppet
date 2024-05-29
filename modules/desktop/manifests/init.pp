@@ -31,6 +31,5 @@ class desktop {
 
   if ! $facts['is_virtual'] {
     include packages::vlc
-    include packages::virtualbox
   }
 }
