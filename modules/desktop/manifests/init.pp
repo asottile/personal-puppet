@@ -13,6 +13,7 @@ class desktop {
   include desktop::purged
   include desktop::pypy
   include desktop::screensaver
+  include desktop::sshd
   include desktop::terraform
   include desktop::touchpad
   include desktop::venv
