@@ -3,6 +3,7 @@ class desktop::venv {
     'aactivator', 'awshelp', 'babi', 'flake8', 'pre-commit', 'tox', 'twine',
     'virtualenv',
   ]
+  $libraries = ['setuptools', 'wheel']
   $venv = '/home/asottile/opt/venv'
 
   util::virtualenv { $venv: venv => $venv }
@@ -12,7 +13,7 @@ class desktop::venv {
   #     user => 'asottile',
   #     packages => $packages,
   # }
-  $packages.each |$pkg| {
+  ($packages + $libraries).each |$pkg| {
     util::pip {"${venv}(${pkg})":
       pkg     => $pkg,
       venv    => $venv,
