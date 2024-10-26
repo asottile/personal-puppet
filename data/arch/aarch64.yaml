@@ -13,8 +13,8 @@ desktop::packer::archive_name: 'packer_1.10.0_linux_arm64'
 desktop::packer::sha256: '37149ec9ca322aa50f249a645e43e67498b67e785b356c59f9b0f0e6519da78e'
 
 # https://pypy.org/download.html
-desktop::pypy::pypy3: 'pypy3.10-v7.3.12-aarch64'
-desktop::pypy::sha256: '26208b5a134d9860a08f74cce60960005758e82dc5f0e3566a48ed863a1f16a1'
+desktop::pypy::pypy3: 'pypy3.10-v7.3.17-aarch64'
+desktop::pypy::sha256: '53b6e5907df869c49e4eae7aca09fba16d150741097efb245892c1477d2395f2'
 
 # https://releases.hashicorp.com/terraform/
 desktop::terraform::version: '1.3.2'
