@@ -1,6 +1,6 @@
 # https://golang.org/dl/
-desktop::go::go: 'go1.20.3.linux-arm64'
-desktop::go::sha256: 'eb186529f13f901e7a2c4438a05c2cd90d74706aaa0a888469b2a4a617b6ee54'
+desktop::go::go: 'go1.23.4.linux-arm64'
+desktop::go::sha256: '16e5017863a7f6071363782b1b8042eb12c6ca4f4cd71528b2123f0a1275b13e'
 
 # https://nodejs.org/dist
 desktop::node::node: 'v18.19.0'
