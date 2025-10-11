@@ -17,9 +17,9 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 MODULE_PATH = ':'.join(os.path.join(HERE, d) for d in ('modules', 'vendor'))
 
 GEMS = (
-    ('facter', '4.9.0'),
-    ('puppet', '8.9.0'),
-    ('r10k', '4.1.0'),
+    ('facter', '4.10.0'),
+    ('puppet', '8.10.0'),
+    ('r10k', '5.0.2'),
 )
 
 
