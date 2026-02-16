@@ -43,19 +43,15 @@ class desktop::workspace {
     source   => 'git@github.com:deadsnakes/runbooks',
   }
 
-  $awc_repos = ['thumbnails', 'twitch-chat-bot']
   file { '/home/asottile/workspace/anthonywritescode':
     ensure => 'directory',
     owner  => 'asottile',
     group  => 'asottile',
-  }
-  $awc_repos.each |$awc_repo| {
-    vcsrepo { "/home/asottile/workspace/anthonywritescode/${awc_repo}":
-      ensure   => 'present',
-      user     => 'asottile',
-      provider => 'git',
-      source   => "git@github.com:anthonywritescode/${awc_repo}",
-      require  => File['/home/asottile/workspace/anthonywritescode'],
-    }
+  } ->
+  vcsrepo { '/home/asottile/workspace/anthonywritescode/twitch-chat-bot':
+    ensure   => 'present',
+    user     => 'asottile',
+    provider => 'git',
+    source   => 'git@github.com:anthonywritescode/twitch-chat-bot',
   }
 }
