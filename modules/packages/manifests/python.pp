@@ -1,6 +1,6 @@
 class packages::python {
   package { 'python3-dev': ensure => 'latest' } ->
-  file { '/etc/python3.12/sitecustomize.py':
+  file { '/etc/python3.14/sitecustomize.py':
     ensure  => present,
     content => '',
   }
@@ -11,8 +11,8 @@ class packages::python {
     'python3.9-dev', 'python3.9-distutils',
     'python3.10-dev', 'python3.10-distutils',
     'python3.11-dev',
+    'python3.12-dev',
     'python3.13-dev',
-    'python3.14-dev',
     'python3.15-dev',
   ]
   apt::ppa { 'ppa:deadsnakes/ppa': } ->
