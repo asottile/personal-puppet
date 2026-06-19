@@ -8,7 +8,6 @@ class desktop {
   include desktop::launcher
   include desktop::node
   include desktop::packer
-  include desktop::pidgin
   include desktop::podman
   include desktop::purged
   include desktop::pypy
@@ -18,14 +17,12 @@ class desktop {
   include desktop::touchpad
   include desktop::venv
   include desktop::virtualbox
-  include desktop::wayland
   include desktop::workspace
 
   include packages::debian_packaging
   include packages::build_deps
   include packages::editors
   include packages::firefox
-  include packages::gnome_terminal
   include packages::podman
   include packages::python
   include packages::utilities

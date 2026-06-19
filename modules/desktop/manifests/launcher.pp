@@ -1,14 +1,12 @@
 class desktop::launcher {
   gsetting { 'org.gnome.shell favorite-apps':
-    ensure  => [
+    ensure => [
       'org.gnome.Nautilus.desktop',
-      'org.gnome.Terminal.desktop',
+      'org.gnome.Ptyxis.desktop',
       'firefox.desktop',
-      'pidgin.desktop',
-      'gnome-control-center.desktop',
+      'org.gnome.Settings.desktop',
     ],
-    user    => 'asottile',
-    require => [Package['pidgin']],
+    user   => 'asottile',
   }
   gsetting { 'org.gnome.shell.extensions.dash-to-dock multi-monitor':
     ensure => ':true',
