@@ -32,7 +32,7 @@ repos:
     hooks:
     -   id: flake8
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v2.3.0
+    rev: v2.3.1
     hooks:
     -   id: mypy
 -   repo: https://github.com/chriskuehl/puppet-pre-commit-hooks
