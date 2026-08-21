@@ -32,6 +32,8 @@ class desktop::node(String $node, String $archive_name, String $sha256) {
       }
   }
 
+  file { '/home/asottile/bin/corepack': ensure => 'absent' }
+
   tidy { 'purge old node versions':
     path    => '/home/asottile/opt',
     recurse => 1,

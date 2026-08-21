@@ -4,9 +4,9 @@ class desktop::dotfiles {
     '.pypirc', '.pythonrc.py', '.tmux.conf',
   ]
   $binfiles = [
-    'bash/git-happy-merge', 'python/best-of', 'python/bump',
-    'python/git-github-compare',
-    'python/git-github-fork', 'python/git-github-url',
+    'python/best-of', 'python/bump',
+    'python/git-github-compare','python/git-github-fork',
+    'python/git-github-pr', 'python/git-github-url',
     'python/inotify-exec', 'python/prune-remote-branches',
   ]
 
@@ -39,6 +39,8 @@ class desktop::dotfiles {
       ],
     }
   }
+
+  file { '/home/asottile/bin/git-happy-merge': ensure => 'absent' }
 
   # many scripts use this, though we can't set contents quite yet
   file { '/home/asottile/.github-auth.json':
