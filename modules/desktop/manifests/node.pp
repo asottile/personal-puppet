@@ -19,7 +19,7 @@ class desktop::node(String $node, String $archive_name, String $sha256) {
     require       => Package['curl'],
   }
 
-  ['node', 'npm', 'npx', 'corepack'].each |$bin| {
+  ['node', 'npm', 'npx'].each |$bin| {
       file { "/home/asottile/bin/${bin}":
         ensure  => 'link',
         target  => "/home/asottile/opt/${archive_name}/bin/${bin}",
