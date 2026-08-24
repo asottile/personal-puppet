@@ -46,6 +46,6 @@ repos:
         ]
     -   id: puppet-validate
 -   repo: https://github.com/rubocop/rubocop
-    rev: v1.89.0
+    rev: v1.90.0
     hooks:
     -   id: rubocop
