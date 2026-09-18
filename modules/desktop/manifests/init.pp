@@ -14,6 +14,7 @@ class desktop {
   include desktop::screensaver
   include desktop::sshd
   include desktop::terraform
+  include desktop::terminal
   include desktop::touchpad
   include desktop::venv
   include desktop::virtualbox
