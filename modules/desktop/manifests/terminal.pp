@@ -4,7 +4,7 @@ class desktop::terminal {
     user   => 'asottile',
   }
   gsetting { 'org.gnome.Ptyxis default-rows':
-    ensure => 40,
+    ensure => 41,
     user   => 'asottile',
   }
   gsetting { 'org.gnome.Ptyxis use-system-font':
