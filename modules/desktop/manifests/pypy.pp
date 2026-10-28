@@ -5,9 +5,9 @@ class desktop::pypy(String $pypy3, String $sha256) {
     group   => 'asottile',
     require => File['/home/asottile/opt'],
   } ->
-  archive { "/tmp/${pypy3}.tar.bz2":
+  archive { "/tmp/${pypy3}.tar.gz":
     ensure        => 'present',
-    source        => "https://downloads.python.org/pypy/${pypy3}.tar.bz2",
+    source        => "https://downloads.python.org/pypy/${pypy3}.tar.gz",
     checksum      => $sha256,
     checksum_type => 'sha256',
     extract       => true,
