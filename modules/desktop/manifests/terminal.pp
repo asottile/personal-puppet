@@ -15,4 +15,16 @@ class desktop::terminal {
     ensure => 'Monospace 13.5',
     user   => 'asottile',
   }
+  gsetting { 'org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/asottile/ limit-scrollback':
+    ensure => ':false',
+    user   => 'asottile'
+  } ->
+  gsetting { 'org.gnome.Ptyxis default-profile-uuid':
+    ensure => 'asottile',
+    user   => 'asottile'
+  } ->
+  gsetting { 'org.gnome.Ptyxis profile-uuids':
+    ensure => ['asottile'],
+    user   => 'asottile'
+  }
 }

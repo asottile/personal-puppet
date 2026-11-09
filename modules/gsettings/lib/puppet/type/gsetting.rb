@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-NAME_RE = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)* [a-zA-Z0-9_-]+$/.freeze
+NAME_RE = %r{^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*(:[a-zA-Z0-9/]+/)? [a-zA-Z0-9_-]+$}.freeze
 
 def _bool_to_puppet(b)
   { true => ':true', false => ':false', nil => ':nil' }.fetch(b, b)
